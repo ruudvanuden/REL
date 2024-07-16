@@ -1,0 +1,16 @@
+export const spacing = {
+  0: '0',
+  1: 'var(--spacing-01)',
+  2: 'var(--spacing-02)',
+  3: 'var(--spacing-03)',
+  4: 'var(--spacing-04)',
+  6: 'var(--spacing-06)',
+  8: 'var(--spacing-08)',
+  10: 'var(--spacing-10)',
+  12: 'var(--spacing-12)',
+  16: 'var(--spacing-16)',
+  20: 'var(--spacing-20)',
+  24: 'var(--spacing-24)',
+  32: 'var(--spacing-32)',
+  'desktop-viewport-margin': 'var(--desktop-viewport-margin)',
+} as const;

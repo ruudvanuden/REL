@@ -1,0 +1,112 @@
+/* custom components */
+@import 'components/mega-menu';
+
+/* tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /*
+      Specific elements reset to prevent conflicts with consuming apps
+      reset is scoped to/within '.rel_base' to only apply to REL components
+      :where is used to target elements without adding specificity
+      :where is both applied to parent 'rel_base:where()' as all children 'rel_base :where()'.
+    */
+
+  .rel_base {
+    box-sizing: border-box;
+    font-family: var(--font-family-default);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+
+    /*
+      Set 'text-decoration-color' to 'currentColor' to prevent style override from external CSS.
+      This needs to be scoped to the 'rel_underline' class to prevent bleedthrough issues for
+      external, non-REL components that are injected into REL components.
+    */
+    &:where(.rel_underline),
+    & :where(.rel_underline) {
+      text-decoration-color: currentColor;
+    }
+
+    &:where(*, ::before, ::after),
+    & :where(*, ::before, ::after) {
+      border-color: currentColor;
+      border-style: solid;
+      border-width: 0;
+      box-sizing: border-box;
+    }
+
+    &:where(blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre),
+    & :where(blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre) {
+      margin: 0;
+    }
+
+    & :where(h1, h2, h3, h4, h5, h6),
+    &:where(h1, h2, h3, h4, h5, h6) {
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
+    &:where(ol, ul),
+    & :where(ol, ul) {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &:where(button, input, optgroup, select, textarea),
+    & :where(button, input, optgroup, select, textarea) {
+      font-family: inherit;
+      font-feature-settings: inherit;
+      font-variation-settings: inherit;
+      font-size: 100%;
+      font-weight: inherit;
+      line-height: inherit;
+      color: inherit;
+      margin: 0;
+      padding: 0;
+    }
+
+    &:where([type='button'], [type='reset'], [type='submit'], button),
+    & :where([type='button'], [type='reset'], [type='submit'], button) {
+      appearance: button;
+      background-color: initial;
+      background-image: none;
+    }
+
+    &:where(img, svg, video, canvas, audio, iframe, embed, object),
+    & :where(img, svg, video, canvas, audio, iframe, embed, object) {
+      display: block;
+      vertical-align: middle;
+    }
+
+    &:where(img, video),
+    & :where(img, video) {
+      max-width: 100%;
+      height: auto;
+    }
+    &:where(a, button, div),
+    & :where(a, button, div) {
+      word-break: break-word;
+    }
+  }
+}
+
+@layer components {
+  .rel_has-modal {
+    /*
+    scrollbar padding will be set through a CSS variable scoped
+    in :root from code and based on the applicable scrollbar width
+  */
+    padding-right: var(--rel_scrollbar-padding);
+
+    &,
+    & body {
+      overflow: hidden;
+      height: 100%;
+    }
+  }
+}
