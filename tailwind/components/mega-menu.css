@@ -29,6 +29,15 @@
       }
     }
 
+    &__language-link {
+      @apply rel_text-link-heading-sm
+      !rel_text-on-bg-subtle
+      rel_underline
+      lg:rel_text-link-xs
+      lg:hover:!rel_text-on-bg-link-hover
+      lg:active:!rel_text-on-bg-link-pressed;
+    }
+
     &__btn-icon {
       @apply rel_fill-on-bg-trigger-idle
       group-aria-expanded:rel_fill-on-bg-trigger-active
@@ -58,6 +67,19 @@
 
     &__myenv-btn {
       max-width: var(--c_megamenu-myenv-btn-max-width);
+    }
+
+    &__close-btn {
+      @apply rel_sticky
+      rel_top-1
+      rel_box-content
+      rel_inline-grid
+      rel_size-c_icon
+      rel_cursor-pointer
+      rel_place-content-center
+      rel_rounded-full
+      rel_p-2 hover:rel_bg-tertiary-hover
+      active:rel_bg-tertiary-pressed;
     }
 
     /* level 1 */
@@ -102,8 +124,6 @@
       @apply lg:group-aria-expanded:rel_fill-on-bg-trigger-idle-variant
       lg:group-active:group-aria-expanded:rel_fill-on-bg-trigger-pressed;
     }
-
-    /*  menu */
 
     &__menu {
       @apply lg:rel_absolute
@@ -150,7 +170,6 @@
         );
       }
 
-      /* divider */
       @screen lg {
         & > li::after {
           background-color: var(--components-megamenu-desktop-vertical-divider);
@@ -189,6 +208,15 @@
       lg:hover:rel_underline
       lg:active:!rel_text-on-bg-link-pressed
       lg:active:rel_no-underline;
+    }
+
+    &__l2-separator {
+      @apply rel_mb-2
+      rel_hidden
+      rel_h-px
+      rel_border-b
+      rel_border-bg-default
+      lg:after:!rel_hidden;
     }
 
     /* level 3 */
